@@ -1,8 +1,7 @@
 'use strict'
+
 module.exports = (sequelize, DataTypes) => {
-  const student = sequelize.define(
-    'student',
-    {
+  const student = sequelize.define('student', {
       name: DataTypes.STRING(30),
       date_birth: DataTypes.DATE,
       age: DataTypes.INTEGER(3),
@@ -14,23 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       neighborhood: DataTypes.STRING(20),
       address: DataTypes.STRING(50),
       schooling: DataTypes.STRING(20),
-    },
-    {}
-  )
-  student.associate = function(models) {
-    student.hasMany(models.familiar, {
-      constraints: false,
-      foreignKey: 'student',
-    })
-    student.hasMany(models.test_answers, {
-      constraints: false,
-      foreignKey: 'student',
-    })
-    student.hasMany(models.user, { constraints: false, foreignKey: 'creator' })
-    student.hasMany(models.advice, {
-      constraints: false,
-      foreignKey: 'student',
-    })
+    }, {})
+
+  student.associate = models => {
+    student.hasMany(models.familiar, { constraints: false, foreignKey: 'student' })
+    student.hasMany(models.test_answers, { constraints: false, foreignKey: 'student' })
+    student.hasMany(models.advice, { constraints: false, foreignKey: 'student' })
   }
+
   return student
 }

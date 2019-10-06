@@ -1,8 +1,7 @@
 'use strict'
+
 module.exports = (sequelize, DataTypes) => {
-  const guardian = sequelize.define(
-    'guardian',
-    {
+  const guardian = sequelize.define('guardian', {
       email: DataTypes.STRING(100),
       phone: DataTypes.STRING(20),
       had_difficulty_learning: DataTypes.BOOLEAN,
@@ -13,11 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       city: DataTypes.STRING(50),
       neighborhood: DataTypes.STRING(20),
       address: DataTypes.STRING(50),
-    },
-    {}
-  )
-  guardian.associate = function(models) {
-    // guardian.belongsTo(models.familiar, { constraints: false,  foreignKey: 'familiar' })
-  }
+    }, {})
+
+  guardian.associate = models => {}
+
   return guardian
 }

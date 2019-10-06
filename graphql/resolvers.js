@@ -1,16 +1,6 @@
-const books = [
-  {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-]
-
 module.exports = {
   Query: {
-    books: () => books,
+    users: (parent, args, { db }, info) => db.user.findAll(),
+    user: (parent, { id }, { db }, info) => db.user.findOne(({ where: { id } }))
   },
 }

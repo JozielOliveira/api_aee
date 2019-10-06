@@ -1,14 +1,13 @@
 'use strict'
+
 module.exports = (sequelize, DataTypes) => {
-  const advice = sequelize.define(
-    'advice',
-    {
+  const advice = sequelize.define('advice', {
       header: DataTypes.STRING,
       suggestions: DataTypes.STRING,
       comments: DataTypes.STRING,
-    },
-    {}
-  )
-  advice.associate = function(models) {}
+    }, {})
+
+  advice.associate = models => {}
+
   return advice
 }
