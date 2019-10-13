@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r dotenv/config ./index.js",
+    "dev": "node_modules/.bin/nodemon --exec npm start",
     "pretty": "prettier --write \"db/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,8 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "graphql": "^14.5.8",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.2.1",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.18.0",
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "sequelize-cli": "^5.5.1",
-    "prettier": "1.16.4"
+    "prettier": "1.16.4",
+    "nodemon": "^1.19.3"
   }
 }

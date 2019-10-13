@@ -10,14 +10,24 @@ module.exports = gql`
     updatedAt: String,
   }
 
-  type Query {
+  type Auth {
+    token: String,
     user: User
-    users: [User]
+  }
+
+  type Query {
+    me(id: ID, title: String, profession:String): Auth!
+    user(id: ID, title: String, profession:String): User!
+    users(id: ID, title: String, profession:String): [User]!
   }
 
   type Mutation {
+    # AUTH
+    login(email: String!, password: String!): Auth!
+    register(name: String!, email: String!, password: String!, profession: String!): Auth!
+    # USER
     createUser(name: String!, email: String!, password: String!, profession: String!): User!
-    updateUser(id: ID!, title: String, content:String!): [Int!]!
+    updateUser(id: ID!, title: String, profession:String!): User!
     deleteUser(id: ID!): Int!
   }
 `
