@@ -1,12 +1,16 @@
+const { AuthenticationError, ApolloError } = require('apollo-server')
 const { addUser } = require('../../helpers/auth')
 
 module.exports.authentication = {
   login: async (parent, { email, password }, { db }, info) => {
-    if (!email || !password) throw new Error('Invalid Login')
+    if (!email || !password) throw new Error('Email ou senha inválida')
 
     const user = await db.user.findOne({ where: { email } })
 
-    if(!db.user.isPassword(user.password, password)) throw new Error('Invalid Login')
+    if(!user)
+      throw new Error('Email ou senha inválida')
+    else
+      if(!db.user.isPassword(user.password, password)) throw new Error('Email ou senha inválida')
 
     return {
       token : addUser(user),

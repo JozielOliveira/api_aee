@@ -28,7 +28,15 @@ module.exports = (sequelize, DataTypes) => {
           this.setDataValue('password', md5(val));
         }
       },
-      profession: DataTypes.STRING(30),
+      profession: {
+        type: DataTypes.STRING(30),
+        allowNull: false,
+        valueDefault: 'COMMON'
+      },
+      disable: {
+        type: DataTypes.BOOLEAN,
+        valueDefault: 0
+      }
     }, {})
 
   user.isPassword = (encryption, decrypted) => md5(decrypted) === encryption

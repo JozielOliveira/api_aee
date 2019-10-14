@@ -23,6 +23,11 @@ module.exports = {
       profession: {
         allowNull: false,
         type: Sequelize.STRING,
+        valueDefault: 'COMMON'
+      },
+      disable: {
+        type: DataTypes.BOOLEAN,
+        valueDefault: false
       },
       createdAt: {
         allowNull: false,
