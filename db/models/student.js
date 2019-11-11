@@ -6,16 +6,15 @@ module.exports = (sequelize, DataTypes) => {
       date_birth: DataTypes.DATE,
       age: DataTypes.INTEGER(3),
       gender: DataTypes.ENUM('male', 'female'),
-      nationality: DataTypes.STRING(15),
-      zip_code: DataTypes.STRING(20),
-      state: DataTypes.STRING(2),
-      city: DataTypes.STRING(50),
-      neighborhood: DataTypes.STRING(20),
-      address: DataTypes.STRING(50),
-      schooling: DataTypes.STRING(20),
+      others: DataTypes.JSON,
+      address: DataTypes.JSON,
+      school: DataTypes.JSON,
+      referral: DataTypes.JSON,
+      anamnese: DataTypes.JSON,
     }, {})
 
   student.associate = models => {
+    student.belongsTo(models.user, { constraints: false, foreignKey: 'professional' })
     student.hasMany(models.familiar, { constraints: false, foreignKey: 'student' })
     student.hasMany(models.test_answers, { constraints: false, foreignKey: 'student' })
     student.hasMany(models.advice, { constraints: false, foreignKey: 'student' })

@@ -24,35 +24,24 @@ module.exports = {
         allowNull: false,
         type: Sequelize.ENUM('male', 'female'),
       },
-      nationality: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      zip_code: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      state: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      city: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      neighborhood: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
       address: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.JSON,
       },
-      schooling: {
+      school: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.JSON,
       },
-      profession: {
+      others: {
+        type: Sequelize.JSON
+      },
+      referral: {
+        type: Sequelize.JSON
+      },
+      anamnese: {
+        type: Sequelize.JSON
+      },
+      professional: {
         allowNull: false,
         type: Sequelize.BIGINT,
         references: {

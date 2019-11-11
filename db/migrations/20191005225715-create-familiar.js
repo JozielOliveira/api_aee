@@ -25,8 +25,26 @@ module.exports = {
         type: Sequelize.ENUM('male', 'female'),
       },
       schooling: {
-        allowNull: false,
         type: Sequelize.STRING(20),
+      },
+      email: {
+        type: Sequelize.STRING,
+      },
+      phone: {
+        type: Sequelize.STRING,
+      },
+      had_difficulty_learning: {
+        type: Sequelize.BOOLEAN,
+      },
+      graduated: {
+        type: Sequelize.BOOLEAN,
+      },
+      profession: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      address: {
+        type: Sequelize.JSON,
       },
       student: {
         allowNull: false,
