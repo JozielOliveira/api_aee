@@ -4,13 +4,18 @@ const { authentication } = require('./authentication/mutation')
 const { queryUser } = require('./user/query')
 const { mutationUser } = require('./user/mutation')
 
+const { queryStudent } = require('./student/query')
+const { mutationStudent } = require('./student/mutation')
+
 module.exports = {
   Query: {
-    ...queryUser
+    ...queryUser,
+    ...queryStudent,
   },
 
   Mutation: {
     ...authentication,
-    ...mutationUser
+    ...mutationUser,
+    ...mutationStudent,
   }
 }
