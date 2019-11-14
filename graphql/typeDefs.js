@@ -30,9 +30,17 @@ module.exports = gql`
     updatedAt: String,
   }
 
-  type Referral {
+  type FormGeneric {
     title: String,
     steps: [JSON],
+  }
+
+  type Attend {
+    name: String,
+    age: String,
+    gender: String,
+    grade: String,
+    flow: [JSON]
   }
 
   type Auth {
@@ -47,7 +55,10 @@ module.exports = gql`
 
     student(id: String, name: String, date_birth: String, gender: String): Student!
     students(name: String, date_birth: String, gender: String): [Student]!
-    formReferral(id: String!): Referral!
+    # BFF
+    formReferral(id: String!): FormGeneric!
+    formAnamnese(id: String!): FormGeneric!
+    attend(id: String!): Attend!
   }
 
   type Mutation {
